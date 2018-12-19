@@ -1,0 +1,21 @@
+#app{
+  display:flex;
+}
+
+#menuView{
+  width:25%;
+}
+
+#menuView ul {
+  list-style-type: none;
+  color: #777;
+}
+
+#menuView li {
+  font-size: 1.5em;
+  padding-bottom: 15px;
+}
+
+#catView{
+  width:75%;
+}
