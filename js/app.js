@@ -9,37 +9,29 @@ $(function(){
             this.cats = [
             {
               name: 'Larry',
-              img: 'img/kitten.jpg',
+              img: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg',
               clicks: 0
             }, {
               name:'Bob',
-              img: 'img/cat.jpg',
+              img: 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg',
               clicks: 0
             }, {
               name:'Mike',
-              img: 'img/kittens.jpg',
+              img: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg',
               clicks: 0
             }, {
               name:'Steve',
-              img: 'img/cat.jpg',
+              img: 'https://images.pexels.com/photos/730896/pexels-photo-730896.jpeg',
               clicks: 0
             }, {
               name:'Edgar',
-              img: 'img/kitten.jpg',
+              img: 'https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg',
               clicks: 0
             }
           ];
 
           this.currentCat = 0;
 
-        },
-
-        getAllCats: function() {
-            return this.cats;
-        },
-
-        getCurrentCat: function() {
-            return this.cats[this.currentCat];
         }
     };
 
@@ -47,11 +39,11 @@ $(function(){
     var octopus = {
 
         getCats: function() {
-            return model.getAllCats();
+            return model.cats;
         },
 
         getCurrentCat: function() {
-            return model.getCurrentCat();
+            return model.cats[model.currentCat];
         },
 
         setCurrentCat: function(index) {
@@ -87,7 +79,7 @@ $(function(){
         render: function(){
           let htmlStr = '';
           octopus.getCats().forEach(function(cat){
-          htmlStr += '<li class="" data-id=cat>'+
+          htmlStr += '<li class="">'+
                   cat.name +
                   '</li>';
           });

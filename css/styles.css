@@ -19,3 +19,7 @@
 #catView{
   width:75%;
 }
+
+#catView img{
+  max-height: 350px;
+}
