@@ -23,3 +23,12 @@
 #catView img{
   max-height: 350px;
 }
+
+#adminForm {
+  display: none;
+}
+
+/* #admin form, #admin input {
+  display: block;
+  width: 100%;
+} */

@@ -32,6 +32,8 @@ $(function(){
 
           this.currentCat = 0;
 
+          this.adminVisible = false;
+
         }
     };
 
@@ -56,10 +58,33 @@ $(function(){
             catView.render();
         },
 
+        toggleAdmin: function() {
+          console.log('toggle admin');
+          this.$AdminSection = $('#adminForm');
+          //on admin button
+          if(model.adminVisible) {
+            this.$AdminSection.hide();
+            model.adminVisible = false;
+          }else{
+            this.$AdminSection.show();
+            //set current admin fields to data
+            model.adminVisible = true;
+          }
+        },
+
+        closeAdmin: function() {
+          //on cancel button
+        },
+
+        updateCurrentCat: function() {
+          //on save button
+        },
+
         init: function() {
             model.init();
             menuView.init();
             catView.init();
+            adminView.init();
         }
     };
 
@@ -108,6 +133,23 @@ $(function(){
           this.$mainView.html( htmlStr );
 
         }
+    };
+
+    var adminView = {
+
+      init: function() {
+        //add listeners to buttons
+        this.$AdminBtn = $('#adminBtn');
+        this.$AdminBtn.on('click', function(e) {
+          octopus.toggleAdmin();
+      });
+
+      },
+
+      render: function(){
+
+      }
+
     };
 
     octopus.init();
