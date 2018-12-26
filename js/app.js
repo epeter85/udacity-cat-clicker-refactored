@@ -51,6 +51,7 @@ $(function(){
         setCurrentCat: function(index) {
             model.currentCat = index;
             catView.render();
+            adminView.render();
         },
 
         increaseClick: function() {
@@ -59,25 +60,31 @@ $(function(){
         },
 
         toggleAdmin: function() {
-          console.log('toggle admin');
+
           this.$AdminSection = $('#adminForm');
           //on admin button
           if(model.adminVisible) {
             this.$AdminSection.hide();
             model.adminVisible = false;
           }else{
+            adminView.render();
             this.$AdminSection.show();
-            //set current admin fields to data
             model.adminVisible = true;
           }
         },
 
-        closeAdmin: function() {
-          //on cancel button
-        },
-
         updateCurrentCat: function() {
+
+          let $nameField =  $('#nameField');
+          let $imgUrlField =  $('#imgUrlField');
+          let $clicksField = $('#clicksField');
           //on save button
+          model.cats[model.currentCat].name = $nameField.val();
+          model.cats[model.currentCat].img = $imgUrlField.val();
+          model.cats[model.currentCat].clicks = $clicksField.val();
+          catView.render();
+          menuView.render();
+
         },
 
         init: function() {
@@ -138,15 +145,39 @@ $(function(){
     var adminView = {
 
       init: function() {
+        var cat;
         //add listeners to buttons
         this.$AdminBtn = $('#adminBtn');
         this.$AdminBtn.on('click', function(e) {
-          octopus.toggleAdmin();
-      });
+            octopus.toggleAdmin();
+        });
+
+        this.$CancelBtn = $('#cancelBtn');
+        this.$CancelBtn.on('click', function(e) {
+            octopus.toggleAdmin();
+        });
+
+        this.$SaveBtn = $('#saveBtn');
+        this.$SaveBtn.on('click', function(e) {
+            octopus.toggleAdmin();
+            octopus.updateCurrentCat();
+        });
 
       },
 
       render: function(){
+
+        let currentCat = octopus.getCurrentCat();
+        //populate current cat name
+        let $nameField =  $('#nameField');
+        let $imgUrlField =  $('#imgUrlField');
+        let $clicksField =  $('#clicksField');
+
+        $nameField.val(currentCat.name);
+        //populate current cat img url
+        $imgUrlField.val(currentCat.img);
+        //populate current cat img url
+        $clicksField.val(currentCat.clicks);
 
       }
 
